@@ -1,1 +1,35 @@
-<p>player works!</p>
+<mat-card style="padding: 10px">
+
+  <h4>Rechercher un joueur</h4>
+
+  <mat-form-field class="example-form-field">
+    <input matInput placeholder="Rechercher">
+    <button mat-button matSuffix>
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+
+
+</mat-card>
+<br>
+<mat-grid-list cols="2" rowHeight="2:1" gutterSize="16px">
+  <mat-grid-tile>1</mat-grid-tile>
+  <mat-grid-tile>2</mat-grid-tile>
+  <mat-grid-tile>3</mat-grid-tile>
+  <mat-grid-tile>4</mat-grid-tile>
+</mat-grid-list>
+
+
+<style>
+  mat-grid-tile{
+    border-radius: 4px;
+    background-color: white;
+    border-width: 0;
+    border-style: solid;
+    border-color: white;
+    box-shadow:  0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    --mdc-elevated-card-container-shape: 4px;
+    --mdc-outlined-card-container-shape: 4px;
+    --mdc-outlined-card-outline-width: 1px;
+  }
+</style>

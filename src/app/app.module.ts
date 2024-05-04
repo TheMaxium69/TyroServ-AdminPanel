@@ -19,6 +19,7 @@ import { SanctionComponent } from './dashboard/sanction/sanction.component';
 import { EconomyComponent } from './dashboard/economy/economy.component';
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatCardModule} from "@angular/material/card";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import {MatCardModule} from "@angular/material/card";
     MatButtonModule,
     MatGridListModule,
     MatCardModule,
+    MatInputModule,
 
   ],
   providers: [],
