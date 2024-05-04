@@ -20,6 +20,7 @@ import { EconomyComponent } from './dashboard/economy/economy.component';
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
+import { SettingComponent } from './dashboard/setting/setting.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {MatInputModule} from "@angular/material/input";
     OreComponent,
     PlayerComponent,
     SanctionComponent,
-    EconomyComponent
+    EconomyComponent,
+    SettingComponent
   ],
   imports: [
     BrowserModule,

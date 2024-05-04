@@ -5,6 +5,7 @@ import {OreComponent} from "./dashboard/ore/ore.component";
 import {SanctionComponent} from "./dashboard/sanction/sanction.component";
 import {PlayerComponent} from "./dashboard/player/player.component";
 import {EconomyComponent} from "./dashboard/economy/economy.component";
+import {SettingComponent} from "./dashboard/setting/setting.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'player', component: PlayerComponent},
   {path: 'player/:id', component: PlayerComponent},
   {path: 'economy', component: EconomyComponent},
+  {path: 'setting', component: SettingComponent},
 ];
 
 @NgModule({
