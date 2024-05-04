@@ -1,0 +1,26 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.mat-toolbar {
+  color: #fff;
+  background-color: #6363ff;
+}
+
+.mat-nav-list a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.mat-nav-list a:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.router-container{
+  margin: 40px;
+}
+

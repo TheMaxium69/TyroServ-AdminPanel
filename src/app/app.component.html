@@ -1,1 +1,7 @@
-<router-outlet></router-outlet>
+<ng-container *ngIf="!isLog">
+  <app-login></app-login>
+</ng-container>
+
+<ng-container *ngIf="isLog">
+  <app-sidebar></app-sidebar>
+</ng-container>

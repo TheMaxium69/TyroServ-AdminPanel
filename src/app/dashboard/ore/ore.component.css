@@ -1,0 +1,4 @@
+.full-width-card {
+  width: 100%;
+  height: 50vh; /* 50% de la hauteur de la vue */
+}
