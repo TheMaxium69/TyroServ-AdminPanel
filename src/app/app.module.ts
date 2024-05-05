@@ -21,6 +21,7 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
 import { SettingComponent } from './dashboard/setting/setting.component';
+import { ServerComponent } from './dashboard/server/server.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SettingComponent } from './dashboard/setting/setting.component';
     PlayerComponent,
     SanctionComponent,
     EconomyComponent,
-    SettingComponent
+    SettingComponent,
+    ServerComponent
   ],
   imports: [
     BrowserModule,

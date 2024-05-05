@@ -6,6 +6,7 @@ import {SanctionComponent} from "./dashboard/sanction/sanction.component";
 import {PlayerComponent} from "./dashboard/player/player.component";
 import {EconomyComponent} from "./dashboard/economy/economy.component";
 import {SettingComponent} from "./dashboard/setting/setting.component";
+import {ServerComponent} from "./dashboard/server/server.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'player', component: PlayerComponent},
   {path: 'player/:id', component: PlayerComponent},
   {path: 'economy', component: EconomyComponent},
+  {path: 'server', component: ServerComponent},
   {path: 'setting', component: SettingComponent},
 ];
 
