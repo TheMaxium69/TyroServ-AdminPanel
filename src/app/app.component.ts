@@ -47,6 +47,10 @@ export class AppComponent {
 
   statsType:any[] = [
     {
+      "name":"Inventory",
+      "type":"pickup",
+    },
+    {
       "name":"Block Miné",
       "type":"mineBlock",
     },
@@ -57,10 +61,6 @@ export class AppComponent {
     {
       "name":"Item Crafter",
       "type":"craftItem",
-    },
-    {
-      "name":"pickup",
-      "type":"pickup",
     },
     {
       "name":"Item Droppé",
