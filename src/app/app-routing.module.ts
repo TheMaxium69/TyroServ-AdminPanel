@@ -10,6 +10,7 @@ import {ServerComponent} from "./dashboard/server/server.component";
 import {PlayerDetailComponent} from "./dashboard/player-detail/player-detail.component";
 import {FactionComponent} from "./dashboard/faction/faction.component";
 import {FactionDetailComponent} from "./dashboard/faction-detail/faction-detail.component";
+import {ErrComponent} from "./dashboard/err/err.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -22,6 +23,8 @@ const routes: Routes = [
   {path: 'economy', component: EconomyComponent},
   {path: 'server', component: ServerComponent},
   {path: 'setting', component: SettingComponent},
+  {path: 'err', component: ErrComponent},
+  {path: '**', component: ErrComponent},
 ];
 
 @NgModule({

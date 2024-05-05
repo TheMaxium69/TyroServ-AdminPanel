@@ -1,5 +1,86 @@
-<mat-card class="full-width-card">
-  <img src="">
-  <h1>PSEUDO</h1>
+<ng-container *ngIf="playerInfo">
+<mat-card class="full-width-card" >
+  <div style="width: 100%;margin-bottom: 10px">
+    <img style="margin: auto" src="https://minotar.net/helm/{{ playerInfo?.player?.name }}" width="70">
+  </div>
+  <h1>{{ playerInfo?.player?.name}}</h1>
 </mat-card>
 <br><br>
+<mat-card style="padding: 10px">
+  <mat-list role="list">
+
+    <mat-list-item role="listitem">
+      <div class="start" matListItemAvatar>UUID</div>
+      <div matListItemTitle>
+        {{ playerInfo.player.uuid }}
+      </div>
+    </mat-list-item>
+
+    <mat-list-item role="listitem">
+      <div class="start" matListItemAvatar>Faction</div>
+      <div matListItemTitle>
+        <button mat-raised-button color="primary" routerLink="/faction/{{ playerInfo.faction.id }}" style="text-transform: capitalize">{{ playerInfo.faction.name }}</button>
+      </div>
+    </mat-list-item>
+
+    <mat-list-item role="listitem">
+      <div class="start" matListItemAvatar>Argent</div>
+      <div matListItemTitle>
+        {{ playerInfo.money.wallet }}
+      </div>
+    </mat-list-item>
+
+    <mat-list-item role="listitem">
+      <div class="start" matListItemAvatar>Roles</div>
+      <div matListItemTitle>
+        <ng-container *ngFor="let roleOne of playerInfo.roles">
+          <button mat-flat-button color="primary" style="text-transform: capitalize">{{ roleOne.displayName }}</button>
+        </ng-container>
+      </div>
+    </mat-list-item>
+
+    <mat-list-item role="listitem">
+      <div class="start" matListItemAvatar>Useritium</div>
+      <div matListItemTitle>
+        NONE
+      </div>
+    </mat-list-item>
+
+    <mat-list-item role="listitem">
+      <div class="start" matListItemAvatar>Création</div>
+      <div matListItemTitle>
+        NONE
+      </div>
+    </mat-list-item>
+
+    <mat-list-item role="listitem">
+      <div class="startunique" matListItemAvatar>Dernière connexion</div>
+      <div matListItemTitle>
+        NONE
+      </div>
+    </mat-list-item>
+
+  </mat-list>
+</mat-card>
+<br><br>
+<mat-card style="padding: 20px">
+
+  <h2>Statistiques du joueur</h2>
+  <mat-tab-group>
+    <mat-tab label="Tout les serveurs">
+      <mat-list>
+        <ng-container *ngFor="let stat of statsAll">
+          <mat-list-item>{{ stat[0] }} : <span style="color: green">{{ stat[1] }}</span></mat-list-item>
+        </ng-container>
+      </mat-list>
+    </mat-tab>
+    <mat-tab label="DefaultMap">
+    </mat-tab>
+    <mat-tab label="devMap">
+    </mat-tab>
+  </mat-tab-group>
+
+</mat-card>
+
+
+</ng-container>

@@ -30,6 +30,9 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatRadioModule} from "@angular/material/radio";
 import { FactionComponent } from './dashboard/faction/faction.component';
 import { FactionDetailComponent } from './dashboard/faction-detail/faction-detail.component';
+import { ErrComponent } from './dashboard/err/err.component'
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -46,7 +49,8 @@ import { FactionDetailComponent } from './dashboard/faction-detail/faction-detai
     FilterPipe,
     PlayerDetailComponent,
     FactionComponent,
-    FactionDetailComponent
+    FactionDetailComponent,
+    ErrComponent
   ],
   imports: [
     BrowserModule,
@@ -65,6 +69,8 @@ import { FactionDetailComponent } from './dashboard/faction-detail/faction-detai
     FormsModule,
     MatButtonToggleModule,
     MatRadioModule,
+    MatProgressSpinnerModule,
+    MatTabsModule,
 
   ],
   providers: [],

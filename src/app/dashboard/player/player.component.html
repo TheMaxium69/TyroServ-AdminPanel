@@ -31,7 +31,7 @@
   <mat-list role="list">
     <ng-container *ngFor="let playerOne of playerAll | filter: searchTerm">
       <mat-list-item role="listitem" routerLink="/player/{{ playerOne.uuid }}">
-        <div matListItemAvatar><img src="https://minotar.net/helm/{{ playerOne.name }}" alt="skin" width="40"></div>
+        <div matListItemAvatar><img style="border-radius: 5px;" src="https://minotar.net/helm/{{ playerOne.name }}" alt="skin" width="40"></div>
         <div matListItemTitle>{{ playerOne.name }}</div>
         <div matListItemLine>{{ playerOne.uuid }}</div>
       </mat-list-item>
