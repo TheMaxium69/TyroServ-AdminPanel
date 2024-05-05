@@ -7,28 +7,32 @@
   </div>
 </mat-card>
 <br><br>
-<mat-card class="not-full-width-card" style="padding: 10px">
-  <h3 style="text-align: center">
-    Choix du serveur
-  </h3>
+<mat-card style="padding: 20px">
 
-  <section class="example-section">
-    <label class="example-margin">Serveur:</label>
-    <mat-radio-group>
-      <mat-radio-button class="example-margin" value="all" checked>All</mat-radio-button>
-      <mat-radio-button class="example-margin" value="before">defaultMap</mat-radio-button>
-      <mat-radio-button class="example-margin" value="before">devMap</mat-radio-button>
-    </mat-radio-group>
-  </section>
-</mat-card>
-<br><br>
-<mat-card style="padding: 10px">
-  <h3>Liste des items</h3>
-  <mat-list>
-    <ng-container *ngFor="let stat of statsAll">
-      <mat-list-item>{{ stat[0] }} : <span style="color: green">{{ stat[1] }}</span></mat-list-item>
+  <h2>Statistiques du global</h2>
+  <mat-tab-group>
+
+    <!--TOUT LES SERVERS-->
+    <mat-tab label="Tout les serveurs">
+      <mat-list>
+        <ng-container *ngFor="let stat of statsAll">
+          <mat-list-item>{{ stat[0] }} : <span style="color: green">{{ stat[1] }}</span></mat-list-item>
+        </ng-container>
+      </mat-list>
+    </mat-tab>
+
+    <!--PAR SERVEUR-->
+    <ng-container *ngFor="let servOne of servInfo">
+      <mat-tab label="{{ servOne.name }}">
+        <mat-list>
+          <ng-container *ngFor="let stat of statsWorld[servOne.name]">
+            <mat-list-item>{{ stat[0] }} : <span style="color: green">{{ stat[1] }}</span></mat-list-item>
+          </ng-container>
+        </mat-list>
+      </mat-tab>
     </ng-container>
-  </mat-list>
+
+  </mat-tab-group>
 
 </mat-card>
 

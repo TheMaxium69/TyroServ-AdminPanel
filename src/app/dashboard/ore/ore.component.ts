@@ -12,31 +12,54 @@ import {PlayerMinecraftApiInterface} from "../../interface/player-minecraft-api.
 })
 export class OreComponent implements OnInit {
 
-  statsRequest:any[] = [];
   statsAll:any[] = [];
   statsWorld:any[] = [];
+
+  servInfo:any|undefined;
 
   constructor(private globalService: GlobalService,
               private app: AppComponent) {}
 
   ngOnInit(): void {
-    this.generateShema()
-    this.getGlobalStats()
+    this.generateShema();
+    this.getGlobalStats();
+    this.getInfoServ();
   }
 
   getGlobalStats(): void {
     this.globalService.getGlobal("stats", this.app.setURL('tyroserv')).subscribe((response) => {
 
       if (response.status == "ok"){
-        this.statsRequest = response.result;
         this.statsAll = Object.entries(response.result.all);
-        console.log(this.statsAll);
-        console.log(this.statsWorld);
+        this.statsWorld = Object.entries(response.result.world);
+
+        //FORMATAGE DES STATS WORLD
+        let newStatsWorld:any[] = [];
+        this.statsWorld.forEach(worldOne => {
+          newStatsWorld[worldOne[0]] = Object.entries(worldOne[1])
+        });
+        this.statsWorld = newStatsWorld;
+
+        // console.log(this.statsAll);
+        // console.log(this.statsWorld)
+
       }
 
     });
   }
 
+
+
+  getInfoServ(){
+
+    this.globalService.getGlobal('servers', this.app.setURL('tyroserv')).subscribe((response) => {
+
+      if (response.status == "ok"){
+        this.servInfo = response.result;
+      }
+
+    });
+  }
 
 
 

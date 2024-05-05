@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {AppComponent} from "../../app.component";
 import {PlayerDetailService} from "../../service/player-detail.service";
 import {UserMinecraftApiInterface} from "../../interface/user-minecraft-api.interface";
+import {GlobalService} from "../../service/global.service";
 
 @Component({
   selector: 'app-player-detail',
@@ -13,15 +14,16 @@ export class PlayerDetailComponent implements OnInit{
 
   playerUUID: string | null | undefined;
   playerInfo:UserMinecraftApiInterface|undefined;
-  statsRequest:any[] = [];
   statsAll:any[] = [];
   statsWorld:any[] = [];
 
+  servInfo:any|undefined;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private playerDetailService: PlayerDetailService,
+    private globalService: GlobalService,
     private app: AppComponent,) {
   }
 
@@ -31,6 +33,7 @@ export class PlayerDetailComponent implements OnInit{
 
     if (this.playerUUID){
       this.getInfoPlayer(this.playerUUID)
+      this.getInfoServ();
     } else {
       this.router.navigate(['/err']);
     }
@@ -44,14 +47,17 @@ export class PlayerDetailComponent implements OnInit{
       if (response.status == "ok" && response.result.player !== "no player"){
 
         this.playerInfo = response.result;
-        console.log(this.playerInfo);
 
-
-        this.statsRequest = response.result.stats;
         this.statsAll = Object.entries(response.result.stats.all);
-        this.statsWorld = response.result.stats.world;
-        console.log(this.statsAll);
-        console.log(this.statsWorld);
+        this.statsWorld = Object.entries(response.result.stats.world);
+
+        //FORMATAGE DES STATS WORLD
+        let newStatsWorld:any[] = [];
+        this.statsWorld.forEach(worldOne => {
+          newStatsWorld[worldOne[0]] = Object.entries(worldOne[1])
+        });
+        this.statsWorld = newStatsWorld;
+        console.log(this.statsWorld)
 
       } else {
         this.router.navigate(['/err']);
@@ -60,5 +66,15 @@ export class PlayerDetailComponent implements OnInit{
     });
   }
 
+  getInfoServ(){
+
+    this.globalService.getGlobal('servers', this.app.setURL('tyroserv')).subscribe((response) => {
+
+      if (response.status == "ok"){
+        this.servInfo = response.result;
+      }
+
+    });
+  }
 
 }

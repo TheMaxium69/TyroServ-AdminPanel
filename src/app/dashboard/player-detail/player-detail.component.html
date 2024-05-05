@@ -67,17 +67,27 @@
 
   <h2>Statistiques du joueur</h2>
   <mat-tab-group>
-    <mat-tab label="Tout les serveurs">
-      <mat-list>
-        <ng-container *ngFor="let stat of statsAll">
-          <mat-list-item>{{ stat[0] }} : <span style="color: green">{{ stat[1] }}</span></mat-list-item>
-        </ng-container>
-      </mat-list>
-    </mat-tab>
-    <mat-tab label="DefaultMap">
-    </mat-tab>
-    <mat-tab label="devMap">
-    </mat-tab>
+
+    <!--TOUT LES SERVERS-->
+      <mat-tab label="Tout les serveurs">
+        <mat-list>
+          <ng-container *ngFor="let stat of statsAll">
+            <mat-list-item>{{ stat[0] }} : <span style="color: green">{{ stat[1] }}</span></mat-list-item>
+          </ng-container>
+        </mat-list>
+      </mat-tab>
+
+    <!--PAR SERVEUR-->
+    <ng-container *ngFor="let servOne of servInfo">
+      <mat-tab label="{{ servOne.name }}">
+        <mat-list>
+          <ng-container *ngFor="let stat of statsWorld[servOne.name]">
+            <mat-list-item>{{ stat[0] }} : <span style="color: green">{{ stat[1] }}</span></mat-list-item>
+          </ng-container>
+        </mat-list>
+      </mat-tab>
+    </ng-container>
+
   </mat-tab-group>
 
 </mat-card>
