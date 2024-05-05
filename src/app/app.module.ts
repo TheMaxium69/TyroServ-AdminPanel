@@ -22,6 +22,10 @@ import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
 import { SettingComponent } from './dashboard/setting/setting.component';
 import { ServerComponent } from './dashboard/server/server.component';
+import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
+import { FilterPipe } from './filter.pipe';
+import { PlayerDetailComponent } from './dashboard/player-detail/player-detail.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,9 @@ import { ServerComponent } from './dashboard/server/server.component';
     SanctionComponent,
     EconomyComponent,
     SettingComponent,
-    ServerComponent
+    ServerComponent,
+    FilterPipe,
+    PlayerDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +55,8 @@ import { ServerComponent } from './dashboard/server/server.component';
     MatGridListModule,
     MatCardModule,
     MatInputModule,
+    HttpClientModule,
+    FormsModule,
 
   ],
   providers: [],

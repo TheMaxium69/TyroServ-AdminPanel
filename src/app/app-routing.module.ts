@@ -7,13 +7,14 @@ import {PlayerComponent} from "./dashboard/player/player.component";
 import {EconomyComponent} from "./dashboard/economy/economy.component";
 import {SettingComponent} from "./dashboard/setting/setting.component";
 import {ServerComponent} from "./dashboard/server/server.component";
+import {PlayerDetailComponent} from "./dashboard/player-detail/player-detail.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'ore', component: OreComponent},
   {path: 'sanction', component: SanctionComponent},
   {path: 'player', component: PlayerComponent},
-  {path: 'player/:id', component: PlayerComponent},
+  {path: 'player/:uuid', component: PlayerDetailComponent},
   {path: 'economy', component: EconomyComponent},
   {path: 'server', component: ServerComponent},
   {path: 'setting', component: SettingComponent},

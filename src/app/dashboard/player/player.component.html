@@ -1,9 +1,23 @@
+<mat-grid-list cols="2" rowHeight="2:1" gutterSize="16px">
+  <mat-grid-tile>
+    <p style="text-align: center">
+      Nombre de joueur connecter (SAMPLE)<br><br>
+      <span style="font-size: 40px">100/2000</span>
+    </p>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <p style="text-align: center">
+      Nombre de joueur unique<br><br>
+      <span style="font-size: 40px">{{ nbPlayerUnique }}</span>
+    </p></mat-grid-tile>
+</mat-grid-list>
+<br>
 <mat-card style="padding: 10px">
 
   <h4>Rechercher un joueur</h4>
 
   <mat-form-field class="example-form-field">
-    <input matInput placeholder="Rechercher">
+    <input matInput placeholder="Rechercher" [(ngModel)]="searchTerm">
     <button mat-button matSuffix>
       <mat-icon>search</mat-icon>
     </button>
@@ -12,24 +26,16 @@
 
 </mat-card>
 <br>
-<mat-grid-list cols="2" rowHeight="2:1" gutterSize="16px">
-  <mat-grid-tile>1</mat-grid-tile>
-  <mat-grid-tile>2</mat-grid-tile>
-  <mat-grid-tile>3</mat-grid-tile>
-  <mat-grid-tile>4</mat-grid-tile>
-</mat-grid-list>
+<mat-card style="padding: 10px">
 
+  <mat-list role="list">
+    <ng-container *ngFor="let playerOne of playerAll | filter: searchTerm">
+      <mat-list-item role="listitem" routerLink="/player/{{ playerOne.uuid }}">
+        <div matListItemAvatar><img src="https://minotar.net/helm/{{ playerOne.name }}" alt="skin" width="40"></div>
+        <div matListItemTitle>{{ playerOne.name }}</div>
+        <div matListItemLine>{{ playerOne.uuid }}</div>
+      </mat-list-item>
+    </ng-container>
+  </mat-list>
 
-<style>
-  mat-grid-tile{
-    border-radius: 4px;
-    background-color: white;
-    border-width: 0;
-    border-style: solid;
-    border-color: white;
-    box-shadow:  0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-    --mdc-elevated-card-container-shape: 4px;
-    --mdc-outlined-card-container-shape: 4px;
-    --mdc-outlined-card-outline-width: 1px;
-  }
-</style>
+</mat-card>
