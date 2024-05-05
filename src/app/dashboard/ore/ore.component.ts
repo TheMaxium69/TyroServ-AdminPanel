@@ -16,6 +16,7 @@ export class OreComponent implements OnInit {
   statsWorld:any[] = [];
 
   servInfo:any|undefined;
+  statsType:any[] = [];
 
   constructor(private globalService: GlobalService,
               private app: AppComponent) {}
@@ -24,6 +25,7 @@ export class OreComponent implements OnInit {
     this.generateShema();
     this.getGlobalStats();
     this.getInfoServ();
+    this.statsType = this.app.statsType;
   }
 
   getGlobalStats(): void {
@@ -48,8 +50,6 @@ export class OreComponent implements OnInit {
     });
   }
 
-
-
   getInfoServ(){
 
     this.globalService.getGlobal('servers', this.app.setURL('tyroserv')).subscribe((response) => {
@@ -60,13 +60,6 @@ export class OreComponent implements OnInit {
 
     });
   }
-
-
-
-
-
-
-
 
   generateShema(){
     const ctx = document.getElementById('myChart');
@@ -87,6 +80,86 @@ export class OreComponent implements OnInit {
       }
     });
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /*  STATS TRAITEMENT  */
+
+
+  formatageStats(statsName:string):string{
+
+    let statsNameCorrect = statsName.substring(5);
+
+    return statsNameCorrect;
+
+  }
+
+  formatageStatsName(statsName: string, type: string):string{
+
+    let delChiffre = 5 + type.length + 1;
+
+    let statsNameCorrect = statsName.substring(delChiffre);
+
+    return statsNameCorrect;
+
+  }
+
+  formatageStatsUrl(statsName: string, type: string):string{
+
+    let delChiffre = 5 + type.length + 1;
+
+    let statsNameCorrect = statsName.substring(delChiffre);
+
+    let urlIconeStats = statsNameCorrect.replace(/\./g, "/");
+
+    return urlIconeStats;
+
+  }
+
+  typeStats(statsName:string){
+
+    statsName = this.formatageStats(statsName);
+
+    let typeStats = "none";
+
+    this.statsType.forEach(typeOne =>{
+
+      if (statsName.substring(0, typeOne.type.length) == typeOne.type){
+        typeStats = typeOne.type
+      }
+
+    })
+
+    if (!statsName.includes(".")){
+      typeStats = "classic";
+    }
+
+    return typeStats;
+
+  }
+
+  imageLoadFailed(event: any) {
+    event.target.src = 'https://tyroserv.fr/texture/none.png';
+  }
+
+
+
+
+
 
 
 

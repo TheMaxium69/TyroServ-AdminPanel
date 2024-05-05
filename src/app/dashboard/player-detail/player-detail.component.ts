@@ -18,6 +18,7 @@ export class PlayerDetailComponent implements OnInit{
   statsWorld:any[] = [];
 
   servInfo:any|undefined;
+  statsType:any[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -30,6 +31,7 @@ export class PlayerDetailComponent implements OnInit{
   ngOnInit(): void {
 
     this.playerUUID = this.route.snapshot.paramMap.get('uuid');
+    this.statsType = this.app.statsType;
 
     if (this.playerUUID){
       this.getInfoPlayer(this.playerUUID)
@@ -76,5 +78,71 @@ export class PlayerDetailComponent implements OnInit{
 
     });
   }
+
+
+
+
+
+
+  /*  STATS TRAITEMENT  */
+
+
+  formatageStats(statsName:string):string{
+
+    let statsNameCorrect = statsName.substring(5);
+
+    return statsNameCorrect;
+
+  }
+
+  formatageStatsName(statsName: string, type: string):string{
+
+    let delChiffre = 5 + type.length + 1;
+
+    let statsNameCorrect = statsName.substring(delChiffre);
+
+    return statsNameCorrect;
+
+  }
+
+  formatageStatsUrl(statsName: string, type: string):string{
+
+    let delChiffre = 5 + type.length + 1;
+
+    let statsNameCorrect = statsName.substring(delChiffre);
+
+    let urlIconeStats = statsNameCorrect.replace(/\./g, "/");
+
+    return urlIconeStats;
+
+  }
+
+  typeStats(statsName:string){
+
+    statsName = this.formatageStats(statsName);
+
+    let typeStats = "none";
+
+    this.statsType.forEach(typeOne =>{
+
+      if (statsName.substring(0, typeOne.type.length) == typeOne.type){
+        typeStats = typeOne.type
+      }
+
+    })
+
+    if (!statsName.includes(".")){
+      typeStats = "classic";
+    }
+
+    return typeStats;
+
+  }
+
+  imageLoadFailed(event: any) {
+    event.target.src = 'https://tyroserv.fr/texture/none.png';
+  }
+
+
 
 }

@@ -69,21 +69,88 @@
   <mat-tab-group>
 
     <!--TOUT LES SERVERS-->
-      <mat-tab label="Tout les serveurs">
-        <mat-list>
+    <mat-tab label="Tout les serveurs">
+      <mat-list>
+
+        <!--TRIE TYPE-->
+        <ng-container *ngFor="let typeOne of statsType">
+          <div mat-subheader>{{ typeOne.name }}</div>
           <ng-container *ngFor="let stat of statsAll">
-            <mat-list-item>{{ stat[0] }} : <span style="color: green">{{ stat[1] }}</span></mat-list-item>
+            <mat-list-item *ngIf="this.typeStats(stat[0]) == typeOne.type">
+              <div matListItemIcon>
+                <img src="https://tyroserv.fr/texture/{{ this.formatageStatsUrl(stat[0], typeOne.type) }}"
+                     width="24px"
+                     (error)="imageLoadFailed($event)">
+              </div>
+              <div matListItemTitle>
+                {{ this.formatageStatsName(stat[0], typeOne.type) }} : <span style="color: darkred">{{ stat[1] }}</span>
+              </div>
+            </mat-list-item>
           </ng-container>
-        </mat-list>
-      </mat-tab>
+        </ng-container>
+
+        <!--AUTRE-->
+        <div mat-subheader>Autre</div>
+        <ng-container *ngFor="let stat of statsAll">
+          <mat-list-item *ngIf="this.typeStats(this.formatageStats(stat[0])) == 'classic'">
+            <mat-icon matListItemIcon>bolt</mat-icon>
+            <div matListItemTitle>
+              {{ this.formatageStats(stat[0]) }} : <span style="color: darkred">{{ stat[1] }}</span>
+            </div>
+          </mat-list-item>
+          <mat-list-item *ngIf="this.typeStats(stat[0]) == 'none'">
+            <mat-icon matListItemIcon>bolt</mat-icon>
+            <div matListItemTitle>
+              {{ this.formatageStats(stat[0]) }} : <span style="color: darkred">{{ stat[1] }}</span>
+            </div>
+          </mat-list-item>
+        </ng-container>
+
+      </mat-list>
+    </mat-tab>
 
     <!--PAR SERVEUR-->
     <ng-container *ngFor="let servOne of servInfo">
       <mat-tab label="{{ servOne.name }}">
         <mat-list>
-          <ng-container *ngFor="let stat of statsWorld[servOne.name]">
-            <mat-list-item>{{ stat[0] }} : <span style="color: green">{{ stat[1] }}</span></mat-list-item>
+
+          <!--TRIE TYPE-->
+          <ng-container *ngFor="let typeOne of statsType">
+            <div mat-subheader>{{ typeOne.name }}</div>
+            <ng-container *ngFor="let stat of statsWorld[servOne.name]">
+              <mat-list-item *ngIf="this.typeStats(stat[0]) == typeOne.type">
+                <div matListItemIcon>
+                  <img src="https://tyroserv.fr/texture/{{ this.formatageStatsUrl(stat[0], typeOne.type) }}"
+                       width="24px"
+                       (error)="imageLoadFailed($event)">
+                </div>
+                <div matListItemTitle>
+                  {{ this.formatageStatsName(stat[0], typeOne.type) }} : <span style="color: darkred">{{ stat[1] }}</span>
+                </div>
+              </mat-list-item>
+            </ng-container>
           </ng-container>
+
+          <!--AUTRE-->
+          <div mat-subheader>Autre</div>
+          <ng-container *ngFor="let stat of statsWorld[servOne.name]">
+            <mat-list-item *ngIf="this.typeStats(this.formatageStats(stat[0])) == 'classic'">
+              <mat-icon matListItemIcon>bolt</mat-icon>
+              <div matListItemTitle>
+                {{ this.formatageStats(stat[0]) }} : <span style="color: darkred">{{ stat[1] }}</span>
+              </div>
+            </mat-list-item>
+            <mat-list-item *ngIf="this.typeStats(stat[0]) == 'none'">
+              <mat-icon matListItemIcon>bolt</mat-icon>
+              <div matListItemTitle>
+                {{ this.formatageStats(stat[0]) }} : <span style="color: darkred">{{ stat[1] }}</span>
+              </div>
+            </mat-list-item>
+          </ng-container>
+
+
+
+
         </mat-list>
       </mat-tab>
     </ng-container>
