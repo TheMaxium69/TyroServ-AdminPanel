@@ -26,6 +26,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import { FilterPipe } from './filter.pipe';
 import { PlayerDetailComponent } from './dashboard/player-detail/player-detail.component';
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {MatRadioModule} from "@angular/material/radio";
 
 @NgModule({
   declarations: [
@@ -57,6 +59,8 @@ import { PlayerDetailComponent } from './dashboard/player-detail/player-detail.c
     MatInputModule,
     HttpClientModule,
     FormsModule,
+    MatButtonToggleModule,
+    MatRadioModule,
 
   ],
   providers: [],
