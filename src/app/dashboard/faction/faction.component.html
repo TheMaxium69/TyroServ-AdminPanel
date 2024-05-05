@@ -1,0 +1,35 @@
+
+<mat-card style="padding: 50px">
+  <p style="text-align: center">
+    Nombre de Faction créer<br><br>
+    <span style="font-size: 40px">{{ nbFactionCreate }}</span>
+  </p>
+</mat-card>
+<br>
+<mat-card style="padding: 10px">
+
+  <h4>Rechercher un joueur</h4>
+
+  <mat-form-field class="example-form-field">
+    <input matInput placeholder="Rechercher" [(ngModel)]="searchTerm">
+    <button mat-button matSuffix>
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+
+
+</mat-card>
+<br>
+<mat-card style="padding: 10px">
+
+  <mat-list role="list">
+    <ng-container *ngFor="let factionOne of factionAll | filter: searchTerm">
+      <mat-list-item role="listitem" routerLink="/faction/{{ factionOne.id }}">
+        <mat-icon matListItemIcon>settings_accessibility</mat-icon>
+        <div matListItemTitle>{{ factionOne.name }}</div>
+        <div matListItemLine>{{ factionOne.foundedDate  | date: 'dd/MM/yyyy' }}</div>
+      </mat-list-item>
+    </ng-container>
+  </mat-list>
+
+</mat-card>

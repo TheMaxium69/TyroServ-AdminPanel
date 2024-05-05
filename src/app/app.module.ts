@@ -28,6 +28,8 @@ import { FilterPipe } from './filter.pipe';
 import { PlayerDetailComponent } from './dashboard/player-detail/player-detail.component';
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatRadioModule} from "@angular/material/radio";
+import { FactionComponent } from './dashboard/faction/faction.component';
+import { FactionDetailComponent } from './dashboard/faction-detail/faction-detail.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import {MatRadioModule} from "@angular/material/radio";
     SettingComponent,
     ServerComponent,
     FilterPipe,
-    PlayerDetailComponent
+    PlayerDetailComponent,
+    FactionComponent,
+    FactionDetailComponent
   ],
   imports: [
     BrowserModule,

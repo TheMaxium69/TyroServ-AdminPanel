@@ -1,0 +1,17 @@
+
+mat-grid-tile{
+  border-radius: 4px;
+  background-color: white;
+  border-width: 0;
+  border-style: solid;
+  border-color: white;
+  box-shadow:  0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  --mdc-elevated-card-container-shape: 4px;
+  --mdc-outlined-card-container-shape: 4px;
+  --mdc-outlined-card-outline-width: 1px;
+}
+
+mat-list-item:hover{
+  background-color: #ebe9ed;
+  border-radius: 10px;
+}

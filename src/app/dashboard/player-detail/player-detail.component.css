@@ -1,0 +1,7 @@
+
+.full-width-card {
+  width: 100%;
+  height: 50vh; /* 50% de la hauteur de la vue */
+  text-align: center;
+  padding: 10px;
+}
