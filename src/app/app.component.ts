@@ -25,7 +25,7 @@ export class AppComponent {
   urlUseritiumApi_Prod: string = "https://useritium.fr/api-externe/";
 
   /*FUNCTIONNEMENT*/
-  isLog: boolean = true;
+  isLog: boolean = false;
   Debug:Boolean = true;
   curentDate: Date = new Date();
 
