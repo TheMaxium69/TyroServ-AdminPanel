@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {CallUseritiumApiInterface} from "../interface/call-useritium-api.interface";
 
@@ -9,17 +9,21 @@ import {CallUseritiumApiInterface} from "../interface/call-useritium-api.interfa
 export class UseritiumService {
   constructor(private http: HttpClient) { }
 
-  connection(body:string, url:string): Observable<CallUseritiumApiInterface> {
+  connection(email:string, password:string, url:string): Observable<CallUseritiumApiInterface> {
+
+    const body = new HttpParams()
+      .set('email_useritium', email)
+      .set('mdp_useritium', password);
+
 
     let headers = new HttpHeaders({
-      'Content-Type': 'multipart/form-data',
+      'Content-Type': 'application/x-www-form-urlencoded',
     });
-    // headers.append('Content-Type', 'multipart/form-data');
-    // headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    // headers.append('Content-Type', 'application/json');
-    const options: {headers: HttpHeaders}  = { headers: headers };
 
-    return this.http.post<CallUseritiumApiInterface>(url + '?controller=TyroServ&task=connectPanelAdmin', body, options);
+    const options: { headers: HttpHeaders } = {headers: headers};
+
+    console.log(options)
+
+    return this.http.post<CallUseritiumApiInterface>(url + '?controller=TyroServ&task=connectPanelAdmin', body.toString() , options);
   }
-
 }

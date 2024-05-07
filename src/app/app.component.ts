@@ -19,13 +19,13 @@ export class AppComponent {
    * ******************************************************************************************************************/
 
 
-  AppEnv: string = "DEV"; // DEV or PROD
+  AppEnv: string = "PROD"; // DEV or PROD
 
   /*URL API*/
   urlTyroServApi_Dev: string = "http://localhost/Api-GetTyroServ/";
   urlUseritiumApi_Dev: string = "http://127.0.0.1/ApiUsertium/";
 
-  urlTyroServApi_Prod: string = "http://vps207.tyrolium.fr/api/";
+  urlTyroServApi_Prod: string = "http://localhost/Api-GetTyroServ/";
   urlUseritiumApi_Prod: string = "https://useritium.fr/api-externe/";
 
   /*FUNCTIONNEMENT*/
@@ -33,6 +33,8 @@ export class AppComponent {
   isLog: boolean = false;
   userConnected: UserUseritiumApiInterface|undefined;
   curentDate: Date = new Date();
+
+
 
   /******************************************************************************************************************
    *
@@ -42,19 +44,7 @@ export class AppComponent {
 
   login(email:string, password:string){
 
-
-    console.log(email)
-    console.log(password)
-
-
-    let bodyNoJson = {
-      "email_auth": email,
-      "mdp_auth": password,
-    };
-
-    let body = JSON.stringify(bodyNoJson);
-
-    this.useritiumService.connection(body, this.setURL("useritum")).subscribe(reponse => {
+    this.useritiumService.connection(email, password, this.setURL("useritum")).subscribe(reponse => {
 
       if (reponse.status == "true" && reponse.why == "successfully connected"){
 
@@ -70,12 +60,7 @@ export class AppComponent {
 
     })
 
-
-
-
-
   }
-
 
 
   /******************************************************************************************************************
