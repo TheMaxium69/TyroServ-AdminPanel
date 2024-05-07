@@ -3,16 +3,16 @@
   <h1>TyroServ AdminPanel</h1>
   <h3>Avec les comptes Useritium</h3>
 </hgroup>
-<form>
+<form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
   <div class="group">
-    <input type="email"><span class="highlight"></span><span class="bar"></span>
+    <input type="email" name="email" ngModel><span class="highlight"></span><span class="bar"></span>
     <label>Email</label>
   </div>
   <div class="group">
-    <input type="password"><span class="highlight"></span><span class="bar"></span>
+    <input type="password" name="password" ngModel><span class="highlight"></span><span class="bar"></span>
     <label>Mots de passe</label>
   </div>
-  <button type="button" class="button buttonBlue">Se connecter
+  <button type="submit" class="button buttonBlue">Se connecter
     <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
   </button>
 </form>

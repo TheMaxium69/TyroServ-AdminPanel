@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {UserUseritiumApiInterface} from "./interface/user-useritium-api.interface";
+import {UseritiumService} from "./service/useritium.service";
 
 @Component({
   selector: 'app-root',
@@ -6,6 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  constructor(private useritiumService: UseritiumService) { }
 
 
   /******************************************************************************************************************
@@ -19,14 +23,15 @@ export class AppComponent {
 
   /*URL API*/
   urlTyroServApi_Dev: string = "http://localhost/Api-GetTyroServ/";
-  urlUseritiumApi_Dev: string = "http://localhost/ApiUsertium/";
+  urlUseritiumApi_Dev: string = "http://127.0.0.1/ApiUsertium/";
 
   urlTyroServApi_Prod: string = "http://vps207.tyrolium.fr/api/";
   urlUseritiumApi_Prod: string = "https://useritium.fr/api-externe/";
 
   /*FUNCTIONNEMENT*/
-  isLog: boolean = false;
   Debug:Boolean = true;
+  isLog: boolean = false;
+  userConnected: UserUseritiumApiInterface|undefined;
   curentDate: Date = new Date();
 
   /******************************************************************************************************************
@@ -35,7 +40,41 @@ export class AppComponent {
    *
    * ******************************************************************************************************************/
 
+  login(email:string, password:string){
 
+
+    console.log(email)
+    console.log(password)
+
+
+    let bodyNoJson = {
+      "email_auth": email,
+      "mdp_auth": password,
+    };
+
+    let body = JSON.stringify(bodyNoJson);
+
+    this.useritiumService.connection(body, this.setURL("useritum")).subscribe(reponse => {
+
+      if (reponse.status == "true" && reponse.why == "successfully connected"){
+
+        this.userConnected = reponse.result;
+
+        this.isLog = true;
+
+      } else {
+
+        console.log(reponse.why);
+
+      }
+
+    })
+
+
+
+
+
+  }
 
 
 
