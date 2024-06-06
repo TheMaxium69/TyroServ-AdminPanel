@@ -22,10 +22,10 @@ export class AppComponent {
   AppEnv: string = "PROD"; // DEV or PROD
 
   /*URL API*/
-  urlTyroServApi_Dev: string = "http://localhost/Api-GetTyroServ/";
+  urlTyroServApi_Dev: string = "http://127.0.0.1/Api-GetTyroServ/";
   urlUseritiumApi_Dev: string = "http://127.0.0.1/ApiUsertium/";
 
-  urlTyroServApi_Prod: string = "http://localhost/Api-GetTyroServ/";
+  urlTyroServApi_Prod: string = "http://vps214.tyrolium.fr/api-tyroserv/";
   urlUseritiumApi_Prod: string = "https://useritium.fr/api-externe/";
 
   /*FUNCTIONNEMENT*/
